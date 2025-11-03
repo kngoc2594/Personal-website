@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Khanh Ngoc – Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #eff6ff;
+      --light: #eff6ff;
+      --white: #ffffff;
+      --navy: #0b1120;
+      --accent: #92c0f8;
+      --accent-dark: #010e30;
+      --text: #000000;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(239,246,255,0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 18px;
+    }
+    nav .logo { font-weight: 700; }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      margin-left: 12px;
+      font-size: 0.95rem;
+    }
+    nav a:hover { color: var(--accent-dark); }
+
+    /* generic containers inside full-width sections */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 18px;
+    }
+
+    /* HERO */
+    #hero {
+      width: 100%;
+      background: var(--light);
+      padding-top: 30px;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .hero-heading {
+      font-size: 2.1rem;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .hero-heading .thin { font-weight: 300; font-style: italic; }
+    .hero-heading .bold { font-weight: 700; }
+    .hero-heading .highlight {
+      background: #dbeafe;
+      padding: 2px 6px 3px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--accent);
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      margin-top: 12px;
+    }
+    .hero-photo {
+      text-align: center;
+      background: linear-gradient(180deg,#dbeafe 0%,#ffffff 75%);
+      border-radius: 20px 20px 0 0;
+      padding: 20px 10px 0;
+    }
+    .hero-photo img {
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      border: 4px solid #bfdbfe;
+      object-fit: cover;
+    }
+
+    /* ticker */
+    .ticker-wrap {
+      width: 100%;
+      overflow: hidden;
+      background: var(--navy);
+      color: #fff;
+      white-space: nowrap;
+    }
+    .ticker {
+      display: inline-block;
+      padding-block: 7px;
+      animation: ticker-move 20s linear infinite;
+    }
+    .ticker span {
+      display: inline-block;
+      margin-right: 3rem;
+    }
+    @keyframes ticker-move {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* waves */
+    .wave-bottom {
+      line-height: 0;
+    }
+    .wave-bottom svg {
+      display: block;
+      width: 100%;
+      height: 60px;
+    }
+
+    /* sections */
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+    .section-divider {
+      height: 3px;
+      width: 90px;
+      background: linear-gradient(90deg, #ffffff, rgba(191,219,254,0));
+      margin: 16px 0 20px;
+    }
+
+    /* projects (on white band) */
+    #projects-band {
+      background: var(--light);
+    }
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 15px;
+  /* make all items in a row have the same row height */
+  align-items: stretch;
+}
+
+.project-card {
+  background: #ffffff;
+  border: 1px solid #e2e8ff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;              
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.project-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.project-body {
+  padding: 10px 12px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;                   
+}
+
+.project-body ul {
+  margin: 0;
+  padding-left: 18px;
+  flex: 1;                    
+}
+
+
+    .project-card:hover { transform: translateY(-3px); }
+    .project-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+    }
+    .project-body { padding: 10px 12px 14px 12px; }
+    .project-body h3 { margin: 4px 0; font-size: 1rem; }
+    .project-body p { font-size: 0.85rem; }
+    .project-body a { text-decoration:none; color:var(--accent-dark); font-weight:600; }
+
+    /* notebook band (back to light) */
+    #notebook-band {
+      background: var(--light);
+    }
+    #noteInput {
+      width: 100%;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 6px;
+      resize: vertical;
+    }
+    #addNoteBtn {
+      margin-top: 8px;
+      background: var(--accent);
+      border: none;
+      padding: 7px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .note-item {
+      background: #ffffff;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 6px 8px;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .note-item button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: #b91c1c;
+      font-size: 0.75rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px 0 30px;
+      background: var(--navy);
+      color: #e2e8ff;
+    }
+
+    @media (max-width: 720px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      nav { flex-wrap: wrap; gap: 6px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- header -->
+  <header>
+    <nav>
+      <div class="logo">Portfolio Website</div>
+      <div>
+        <a href="#hero">Home</a>
+        <a href="#about-band">About</a>
+        <a href="#projects-band">Work</a>
+        <a href="#notebook-band">Notebook</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO (light) -->
+  <section id="hero">
+    <div class="container hero-inner">
+      <div>
+        <p class="hero-heading">
+          Looking <span class="thin">for</span> my next <span class="bold">opportunity</span><br>
+          to make <span class="bold">a change.</span><br>
+          Hello, I'm <span class="highlight"> Khanh Ngoc</span>
+        </p>
+        <p>Economic & Computer Science student at Fulbright University Vietnam with a strong interest in Trade Marketing and Business Analytics</p>
+        <a class="hero-cta" href="#projects-band">See My Work</a>
+      </div>
+      <div class="hero-photo">
+        <img src="https://scontent.fsgn5-14.fna.fbcdn.net/v/t39.30808-6/477428807_1302889120990171_1817088462207844748_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=5bC-kO6apQAQ7kNvwEWo5sj&_nc_oc=Adl20vR0tEfuRQgeOJuB1104G8h9XqnWTmSEkT_ebDXfwyBujeg6y8kLZv7PYQDpPLMO9bQgw6kJu6tq6cy5Us13&_nc_zt=23&_nc_ht=scontent.fsgn5-14.fna&_nc_gid=USpiepeJyJPc80CxgNrfvQ&oh=00_AfgAdZ16E6LgS4b1vmkvaoRHp2P_Zmt6z3-sAHDTZ2CujQ&oe=690E9F0D" alt="Profile photo">
+        <p style="margin-top:8px; font-size:0.85rem;">✨OPEN TO WORK✨</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER (navy) -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>Project Excellence, Strategic Leadership</span>
+      <span>Creative Content Creation, Data Analytics</span>
+      <span>Social Impact Advocacy, Community Engagement</span>
+      <span>Project Excellence, Strategic Leadership</span>
+      <span>Creative Content Creation, Data Analytics</span>
+      <span>Social Impact Advocacy, Community Engagement</span>
+    </div>
+  </div>
+
+
+  <!-- ABOUT (white) -->
+  <section id="about-band">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="section-divider"></div>
+      <div class="education">
+  <div class="edu-header">
+    <h3>Education</h3>
+    <strong>Fulbright University Vietnam</strong>
+  </div>
+  <div class="edu-subheader">
+    Ho Chi Minh City, Vietnam
+  </div>
+  <div class="edu-details">
+    <em>Major:</em> Economics | <em>Minor:</em> Computer Science
+  </div>
+  <div class="edu-gpa">
+
+  </div>
+</div>
+      <h3>Achievements</h3>
+      <ul>
+  <li>Top 4 of ASEAN - China - India Youth Leadership Summit 2024 (Vietnam Round) - Sustainability Startathon for innovative ideas and green entrepreneurship by OSG youth alliance</li>
+  <li>Top 40 Trade Marketing category of Career Frontstart 2024 by Foreign Trade University</li>
+  <li>2nd Runner up at Social Pioneers 2023 - Social Marketing Competition by National Economics University</li>
+</ul>
+    </div>
+  </section>
+
+   <!-- wave to white -->
+  <div class="wave-bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path fill="#ffffff" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,69.3C840,85,960,107,1080,106.7C1200,107,1320,85,1380,74.7L1440,64L1440,0L0,0Z"></path>
+    </svg>
+  </div>
+
+  <!-- projects band -->
+  <section id="projects-band">
+    <div class="container">
+      <h2 class="section-title">Work Experiences</h2>
+      <div class="section-divider"></div>
+      <div class="project-grid">
+        <article class="project-card">
+          <img src="https://static.ybox.vn/2016/12/26/860b974e-cb66-11e6-a543-cac091044fd5.jpg" alt="Beiersdoft Vietnam">
+          <div class="project-body">
+            <h3>Beiersdoft Vietnam - Trade Marketing Intern</h3>
+            <ul>
+            <li>Build engagement plans for Sales Supervisors & Beauty Advisors on the internal communication platform, driving 98% active user and 100% training completion within the first month.</li>
+            <li>Prepared monthly business reviews for NIVEA Deo & Face categories using financial analysis and category insights</li>
+            <li>Evaluate promotional schemes with pre-analysis to boost retailer sales offtake, ensuring 16% ROI</li>
+            </ul>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="https://fulbright.edu.vn/wp-content/uploads/2024/04/Fulbright_logo.webp" alt="Fulbright">
+          <div class="project-body">
+            <h3>Fulbright Career Services - Partnership Intern</h3>
+            <ul>
+            <li>Organize Fulbright Career Day with 40+ partners and 300+ student participants by leveraging strategic research, partnerships, and data-driven insights</li>
+            <li>Curate content, design and distribute weekly Career Services Newsletters to 1,000+ recipients, achieving 50%+ click-through rate per work</li>
+            <li>Implement student workshops with external stakeholders, engaging 30+ participants per session to enhance career readiness</li>
+            </ul>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="https://scontent.fsgn5-5.fna.fbcdn.net/v/t39.30808-6/487360496_987202416927260_3084065721318946804_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=mRGRkb8EyiMQ7kNvwEf58kE&_nc_oc=AdmCvxPTp_RU3mpxM7n4LgTdes-9WU9vNUwYh3hMb5G8t07P04HkifwhxoI2yrTTaefd0-UtVvd4lxMg8giLC7B3&_nc_zt=23&_nc_ht=scontent.fsgn5-5.fna&_nc_gid=-ViwYGMYhbQM-z4LI3wvzw&oh=00_AfjtQ74-9VBgDcVMZvKd5VahuazBVzTQ5mVVn_wMgQNJbg&oe=690E96F9" alt="CyberKid Vietnam">
+          <div class="project-body">
+            <h3>CyberKid Vietnam - Partnership Development Manager</h3>
+            <ul>
+            <li>Approached 30 enterprises for Corporate Social Responsibility initiatives: being in dialogue with 07 corporates</li>
+            <li>Brought Internet safety classes to 3274 students in six months through effective partnership with 10+ public, private, and international schools</li>
+            <li>Led a team of 03 members by creating long-term & short-term operational plans and daily team management </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<!-- wave to white -->
+  <div class="wave-bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path fill="#ffffff" d="M0,64L60,58.7C120,53,240,43,360,42.7C480,43,600,53,720,69.3C840,85,960,107,1080,106.7C1200,107,1320,85,1380,74.7L1440,64L1440,0L0,0Z"></path>
+    </svg>
+  </div>
+  <!-- NOTEBOOK (light) -->
+  <section id="notebook-band">
+    <div class="container">
+      <h2 class="section-title">My Notebook</h2>
+      <div class="section-divider"></div>
+      <p>I am happy to receive your message for any work opportunities and collaborations.</p>
+      <label for="noteInput"><strong>New note:</strong></label>
+      <textarea id="noteInput" rows="3" placeholder="Type your note here..."></textarea><br>
+      <button id="addNoteBtn">Add Note</button>
+      <p id="noteMessage" style="color:#b91c1c; display:none; margin-top:6px;">Please type something before adding.</p>
+
+      <div id="notesContainer" style="margin-top:12px;"></div>
+    </div>
+  </section>
+
+  <footer>
+    <small>© 2025 Khanh Ngoc | Introduction to Computer Science</small>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" crossorigin="anonymous"></script>
+  <script>
+  // notebook logic
+  const addNoteBtn = document.getElementById('addNoteBtn');
+  const noteInput = document.getElementById('noteInput');
+  const notesContainer = document.getElementById('notesContainer');
+  const noteMessage = document.getElementById('noteMessage');
+
+  addNoteBtn.addEventListener('click', () => {
+    const text = noteInput.value.trim();
+    if (text === "") {
+      noteMessage.style.display = "block";
+      return;
+    }
+    noteMessage.style.display = "none";
+
+    const noteDiv = document.createElement('div');
+    noteDiv.className = 'note-item';
+    noteDiv.innerHTML = '<span>' + text + '</span><button aria-label="Remove note">x</button>';
+    noteDiv.querySelector('button').addEventListener('click', () => {
+      notesContainer.removeChild(noteDiv);
+    });
+    notesContainer.prepend(noteDiv);
+    noteInput.value = "";
+  });
+
+  noteInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.ctrlKey) addNoteBtn.click();
+  });
+
+  // safe GSAP
+  try {
+    gsap.from(".hero-inner", {duration: 0.8, y: 20, opacity: 0});
+    gsap.from(".project-card", {duration: 0.6, opacity: 0, y: 20, stagger: 0.1});
+  } catch (e) {
+    // if gsap not loaded, just skip animations
+    console.warn("GSAP not available, skipping animations.");
+  }
+</script>
+</body>
+</html>
